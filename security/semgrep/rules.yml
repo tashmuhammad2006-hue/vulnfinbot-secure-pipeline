@@ -1,0 +1,14 @@
+rules:
+  - id: python-detect-eval
+    patterns:
+      - pattern: eval(...)
+    message: "Detected usage of eval(), which can lead to arbitrary code execution."
+    languages: [python]
+    severity: ERROR
+
+  - id: python-detect-exec
+    patterns:
+      - pattern: exec(...)
+    message: "Detected usage of exec(), which can lead to arbitrary code execution."
+    languages: [python]
+    severity: ERROR
