@@ -45,13 +45,13 @@ jobs:
       - name: Build Docker image
         run: docker build -t vulnfinbot:latest .
 
-      - name: Scan Docker image with Trivy
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
         continue-on-error: true
-        uses: aquasecurity/trivy-action@0.28.0
         with:
-          image-ref: "vulnfinbot:latest"
-          format: "json"
-          output: "reports/trivy-report.json"
+          image-ref: vulnfinbot:latest
+          format: json
+          output: reports/trivy-report.json
 
       - name: Run OWASP ZAP baseline scan
         continue-on-error: true
