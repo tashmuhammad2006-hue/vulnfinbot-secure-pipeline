@@ -24,9 +24,6 @@ def sanitize_output(text: str) -> str:
 
 
 def generate_ai_response(user_message: str) -> str:
-    if is_malicious_input(user_message):
-        return "Request blocked by security policy: potential prompt injection or unauthorized action."
-
     msg_lower = user_message.lower()
     if "budget" in msg_lower:
         raw_response = "You can start by tracking your income and expenses."
